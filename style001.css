@@ -1,210 +1,44 @@
-@import url(https://fonts.googleapis.com/css?family=Varela+Round);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
-
-$profileBg: #fff;
-$skillsBg: #3d3e42;
-$profileColor: #9099a0;
-$skillsColor: #9099a0; 
-$linkColor: #66cc99;
-$boldColor: #4a4e51;
-$time: 0.6s;
-
-@mixin breakpoint($point) {
-  @if $point == papa-bear {
-    @media (max-width: 1500px) { @content; }
-  }
-  @if $point == mama-bear {
-    @media (max-width: 1200px) { @content; }
-  }
-  @if $point == brother-bear {
-    @media (max-width: 850px) { @content; }
-  }
-  @else if $point == baby-bear {
-    @media (max-width: 450px) { @content; }
-  }
-}
-
-*, *::after, *::before {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1vw;
-  line-height: 1.5em;
-}
-
-a {
-  color: $linkColor;
-  text-decoration: none;
-}
-
-.clearfix::after, .clearfix::before {
-  content: " ";
-  display: table;
-}
-.clearfix::after { clear: both; }
-
-.bold {
-  color: $boldColor;
-  font-weight: 400;
-}
-
-.resume-wrapper {
-  position: relative;
-  text-align: center;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.container {
-  width: 100%;
-  min-height: 600px;
-}
-
-.profile {
-  background: $profileBg;
-  flex: 1 1 40%;
-  color: $profileColor;
-  padding: 2vw;
-  @include breakpoint(brother-bear) { flex: 1 1 100%; }
-  
-  .name-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
   }
-
-  h1 {
-    font-size: 2.5vw;
-    text-align: left;
-    font-family: 'Varela Round', sans-serif;
-    color: $boldColor;
-    text-transform: uppercase;
-    line-height: 1em;
-    padding-top: 4vw;
-    @include breakpoint(mama-bear) { padding-top: 2vw; }
-    @include breakpoint(baby-bear) { font-size: 1.8em; padding-top: 1.5vw; }
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-
-  .picture-resume-wrapper {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    @include breakpoint(mama-bear) { width: 100%; }
+  h1, h2, h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 5px;
   }
-
-  .picture-resume {
-    width: 15vw;
-    height: 15vw;
-    background-size: cover;
+  .header {
+    text-align: center;
+  }
+  .header img {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    margin: 1vw 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      border-radius: 50%;
-      width: 80%;
-      height: auto;
-    }
-    @include breakpoint(baby-bear) { width: 12vw; height: 12vw; }
+    margin-bottom: 10px;
   }
-
-  .contact-info, .contact-presentation {
-    text-align: left;
-    font-weight: 300;
-    margin: 4vw 0;
-    @include breakpoint(baby-bear) { margin: 2vw 0; }
+  .contact, .section, .reference {
+    margin: 15px 0;
   }
-}
-
-.experience {
-  background: $skillsBg;
-  flex: 1 1 60%;
-  padding: 2vw;
-  color: $skillsColor;
-  font-weight: 300;
-  min-height: 100vh;
-  @include breakpoint(brother-bear) { flex: 1 1 100%; }
+  .section h2, .contact h3, .reference h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .list {
+    padding-left: 20px;
+    list-style-type: square;
+  }
+  .contact p, .reference p {
+    margin: 5px 0;
+  }
   
-  h3.experience-title {
-    color: $linkColor;
-    text-align: left;
-    text-transform: uppercase;
-    font-size: 1.2em;
-    margin-bottom: 2vw;
-    font-weight: 400;
-  }
-
-  .company-wrapper, .job-wrapper {
-    width: 100%;
-    margin-bottom: 3vw;
-    padding: 1vw;
-    @include breakpoint(baby-bear) { margin-bottom: 2vw; }
-  }
-
-  .experience-title {
-    color: white;
-    margin-bottom: 1.5vw;
-  }
-}
-
-.section-padding {
-  padding: 4vw 4vw 2vw 2vw;
-  @include breakpoint(brother-bear) { padding: 6vw 2vw 2vw 2vw; }
-}
-
-.section-wrapper {
-  width: 100%;
-  text-align: left;
-  color: $skillsColor;
-  font-weight: 300;
-  margin-bottom: 2vw;
-  &:nth-child(3) { padding-right: 5%; }
-
-  h3.section-title {
-    color: $linkColor;
-    text-align: left;
-    text-transform: uppercase;
-    font-size: 1.2em;
-    margin-bottom: 2vw;
-    font-weight: 400;
-  }
-
-  .skill-percentage {
-    margin-bottom: 1vw;
-    position: relative;
-    &::after {
-      content: "";
-      width: 100%;
-      height: 0.3vw;
-      background: $boldColor;
-      display: block;
-      margin-top: 0.3vw;
-    }
-    &::before {
-      content: "";
-      height: 0.3vw;
-      background: $linkColor;
-      position: absolute;
-      margin-top: 0.3vw;
-      bottom: 0;
-    }
-  }
-}
-
-@keyframes skill_1 { from { width: 0%; } to { width: 80%; } }
-@keyframes skill_2 { from { width: 0%; } to { width: 90%; } }
-@keyframes skill_3 { from { width: 0%; } to { width: 50%; } }
-@keyframes skill_4 { from { width: 0%; } to { width: 60%; } }
-@keyframes skill_5 { from { width: 0%; } to { width: 70%; } }
-@keyframes skill_6 { from { width: 0%; } to { width: 70%; } }
