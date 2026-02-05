@@ -6,41 +6,78 @@
 <title>BIT Program Schedule 2082</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        margin: 0;
-        padding: 20px;
-        color: #222;
-    }
-    .container {
-        max-width: 900px;
-        margin: auto;
-        background: white;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1, h2, h3 {
-        text-align: center;
-        color: #333;
-    }
-    .section {
-        margin-bottom: 30px;
-    }
-    ul {
-        line-height: 1.8;
-    }
-    .time-block {
-        background: #eef5ff;
-        padding: 12px;
-        margin: 12px 0;
-        border-left: 4px solid #3b82f6;
-        border-radius: 5px;
-    }
-    .time {
-        font-weight: bold;
-    }
+  :root{
+    --bg:#0b0f17;         /* page background (near-black) */
+    --card:#0f172a;       /* section panels */
+    --text:#e5e7eb;       /* main text (light gray) */
+    --muted:#94a3b8;      /* secondary text */
+    --accent:#3b82f6;     /* blue for highlights/lines */
+    --accent-2:#22c55e;   /* optional green accent */
+    --border:#1f2937;     /* subtle borders */
+  }
+  *{box-sizing:border-box}
+  body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+  }
+  .container {
+      max-width: 900px;
+      margin: auto;
+      background: linear-gradient(180deg, rgba(17,24,39,0.85), rgba(2,6,23,0.85));
+      padding: 26px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(2px);
+  }
+  h1, h2, h3 {
+      text-align: center;
+      color: #f8fafc; /* almost white for headings */
+      margin-top: 0.2em;
+      margin-bottom: 0.6em;
+  }
+  h1 { font-size: clamp(22px, 4vw, 32px); }
+  h2 { font-size: clamp(18px, 3vw, 24px); }
+  h3 { font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); }
+
+  .section {
+      margin-bottom: 28px;
+      background: #0b1220; /* dark card */
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+  }
+  p, li { color: var(--text); }
+  ul {
+      line-height: 1.75;
+      margin: 8px 0 0;
+      padding-left: 20px;
+  }
+  .time-block {
+      background: #0c1629;
+      padding: 12px;
+      margin: 12px 0;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      border: 1px solid #0f2346;
+  }
+  .time {
+      font-weight: 700;
+      color: #cbd5e1;
+  }
+  .sublist {
+      margin-top: 8px;
+      color: var(--muted);
+  }
+  .meta {
+      text-align:center;
+      color: var(--muted);
+      margin-bottom: 16px;
+  }
+  a { color: #93c5fd; }
 </style>
 </head>
 
@@ -180,3 +217,4 @@
 
 </body>
 </html>
+
