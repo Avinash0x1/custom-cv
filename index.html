@@ -1,309 +1,182 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Event Schedule</title>
-  <style>
-    :root{
-      --bg:#0f172a;          /* slate-900 */
-      --panel:#111827;       /* gray-900 */
-      --muted:#94a3b8;       /* slate-400 */
-      --text:#e5e7eb;        /* gray-200 */
-      --accent:#22c55e;      /* green-500 */
-      --accent-2:#38bdf8;    /* sky-400 */
-      --danger:#f87171;      /* red-400 */
-      --card:#0b1220;
-      --border:#1f2937;
-      --chip:#0b2a22;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIT Program Schedule 2082</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        color: #222;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";}
-    a{color:var(--accent-2);text-decoration:none}
-    header{padding:22px 16px 8px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:12px}
-    .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#16a34a)}
-    h1{font-size:clamp(20px,2.6vw,28px);margin:0}
-    .tools{display:flex;gap:8px;flex-wrap:wrap}
-    .btn{background:#0b1020;border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
-    .btn:hover{border-color:#334155}
-    .btn.primary{background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#031016;border:none}
-    .container{max-width:1100px;margin:0 auto;padding:10px 16px 40px}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:980px){.grid{grid-template-columns:1fr 380px}}
-    .card{background:linear-gradient(180deg,var(--panel), #0b1220);border:1px solid var(--border);border-radius:14px;padding:14px}
-    .card h2{margin:0 0 8px;font-size:18px}
-    .muted{color:var(--muted)}
-    .help{font-size:13px;color:var(--muted);margin-top:8px}
-    .textarea{width:100%;min-height:120px;border:1px dashed #334155;background:rgba(2,6,23,.6);color:var(--text);border-radius:10px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
-    .flex{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{background:var(--chip);border:1px solid #0a2c21;color:#86efac;padding:4px 10px;border-radius:999px;font-size:12px}
-    table{width:100%;border-collapse:separate;border-spacing:0 8px}
-    thead th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#9ca3af;text-align:left;padding:0 10px}
-    tbody tr{background:var(--card);border:1px solid var(--border)}
-    tbody tr td{padding:10px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    tbody tr td:first-child{border-left:1px solid var(--border);border-top-left-radius:10px;border-bottom-left-radius:10px}
-    tbody tr td:last-child{border-right:1px solid var(--border);border-top-right-radius:10px;border-bottom-right-radius:10px}
-    .tag{font-size:12px;padding:4px 8px;border-radius:999px}
-    .tag.upcoming{background:#052e1a;color:#86efac;border:1px solid #134e4a}
-    .tag.past{background:#2a0b0b;color:#fecaca;border:1px solid #7f1d1d}
-    .search{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 8px}
-    .search input,.search select{background:#0b1020;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
-    .kebab{white-space:nowrap}
-    .empty{padding:22px 10px;color:var(--muted)}
-    .footnote{margin-top:8px;color:#9ca3af;font-size:12px}
-    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
-  </style>
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+        text-align: center;
+        color: #333;
+    }
+    .section {
+        margin-bottom: 30px;
+    }
+    ul {
+        line-height: 1.8;
+    }
+    .time-block {
+        background: #eef5ff;
+        padding: 12px;
+        margin: 12px 0;
+        border-left: 4px solid #3b82f6;
+        border-radius: 5px;
+    }
+    .time {
+        font-weight: bold;
+    }
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="brand">
-      <span class="dot" aria-hidden="true"></span>
-      <h1>Event Schedule</h1>
-    </div>
-    <div class="tools">
-      <button class="btn" id="btnPrint" title="Print or save as PDF (from print dialog)">Print</button>
-      <button class="btn" id="btnExport">Export CSV</button>
-      <label class="btn" for="fileCsv" title="Import a CSV file">Import CSV<input id="fileCsv" type="file" accept=".csv" class="sr-only"></label>
-    </div>
-  </header>
 
-  <div class="container">
-    <div class="grid">
-      <!-- LEFT: Tables -->
-      <section class="card">
-        <h2>Upcoming Events</h2>
-        <div class="search">
-          <input type="text" id="searchInput" placeholder="Search title, location, notes…" />
-          <select id="filterMonth" title="Filter by month">
-            <option value="">All months</option>
-          </select>
-          <select id="filterStatus" title="Filter by status">
-            <option value="">All</option>
-            <option value="upcoming">Upcoming</option>
-            <option value="past">Past</option>
-          </select>
-          <button class="btn" id="btnClearFilters">Clear</button>
-        </div>
+<div class="container">
 
-        <div class="flex" style="margin-bottom:8px;">
-          <span class="chip">Paste-ready</span>
-          <span class="chip">CSV / TSV supported</span>
-          <span class="chip">Auto “Past” after date</span>
-        </div>
+    <h1>BIT PROGRAM SCHEDULE - 2082</h1>
+    <h3>Date: (Insert Date Here)</h3>
+    <p style="text-align:center;">Program Starts: <strong>11:00 AM Onwards</strong></p>
 
-        <table aria-label="Upcoming events table">
-          <thead>
-            <tr>
-              <th style="width:120px;">Date</th>
-              <th style="width:90px;">Time</th>
-              <th>Title</th>
-              <th style="width:180px;">Location</th>
-              <th>Notes</th>
-              <th class="kebab" style="width:90px;">Status</th>
-            </tr>
-          </thead>
-          <tbody id="tbodyUpcoming">
-            <!-- You can paste <tr> rows here directly if you want -->
-            <!-- Example:
-            <tr>
-              <td>2026-03-10</td><td>10:00</td><td>Project Kickoff</td><td>Hall A</td><td>Bring slides</td><td></td>
-            </tr>
-            -->
-          </tbody>
-        </table>
-        <div id="emptyUpcoming" class="empty">No upcoming events yet. Add some below 👇</div>
-      </section>
-
-      <!-- RIGHT: Paste panel + Past table -->
-      <aside class="card">
-        <h2>Add / Paste Events</h2>
-        <p class="muted">
-          Paste rows in this format (CSV or TSV):<br>
-          <code>YYYY-MM-DD, HH:MM, Title, Location, Notes</code>
-        </p>
-        <textarea id="pasteBox" class="textarea" placeholder="Example:
-2026-03-10, 10:00, Project Kickoff, Main Hall, Bring slides
-2026-04-02, 09:30, Town Hall, Auditorium, Coffee at 9:10
-2025-12-15, , Year-End Party, Rooftop, Casual"></textarea>
-        <div class="flex" style="margin-top:8px;">
-          <button class="btn primary" id="btnAdd">Add to Table</button>
-          <button class="btn" id="btnClearBox">Clear Box</button>
-        </div>
-        <p class="help">Tip: You can also paste raw HTML rows (&lt;tr&gt;...&lt;/tr&gt;) directly into the Upcoming table’s body in the code if that’s easier.</p>
-      </aside>
+    <!-- SPEECHES -->
+    <div class="section">
+        <h2>Speeches</h2>
+        <ul>
+            <li>Welcome Speech – 3rd Sem</li>
+            <li>Thank-You Speech 1.0 – 1st Sem</li>
+            <li>Chief Speech</li>
+            <li>Coordinator Speech</li>
+            <li>Farewell Speech – 5th Sem</li>
+            <li>Thank-You Speech 2.0 – 7th Sem</li>
+            <li>Closing Speech</li>
+        </ul>
     </div>
 
-    <section class="card" style="margin-top:16px;">
-      <h2>Past Events</h2>
-      <table aria-label="Past events table">
-        <thead>
-          <tr>
-            <th style="width:120px;">Date</th>
-            <th style="width:90px;">Time</th>
-            <th>Title</th>
-            <th style="width:180px;">Location</th>
-            <th>Notes</th>
-            <th class="kebab" style="width:90px;">Status</th>
-          </tr>
-        </thead>
-        <tbody id="tbodyPast"></tbody>
-      </table>
-      <div id="emptyPast" class="empty">No past events yet.</div>
-      <div class="footnote">Status is calculated using your device’s date.</div>
-    </section>
-  </div>
+    <!-- POSSIBLE PROGRAMS -->
+    <div class="section">
+        <h2>Possible Programs</h2>
+        <ul>
+            <li>Mr. & Mrs. Freshers (Ramp Walk, Introduction, Q&A)</li>
+            <li>Dances</li>
+            <li>Stand-up Comedy</li>
+        </ul>
+    </div>
 
-  <script>
-    // --- Utilities ---
-    const qs = (s, r=document)=>r.querySelector(s);
-    const qsa = (s, r=document)=>[...r.querySelectorAll(s)];
+    <!-- GAMES -->
+    <div class="section">
+        <h2>Games</h2>
+        <ul>
+            <li>Balloon Bursting</li>
+            <li>Hot Potato</li>
+            <li>Jumble Words Questions</li>
+        </ul>
+    </div>
 
-    const tbodyUpcoming = qs('#tbodyUpcoming');
-    const tbodyPast = qs('#tbodyPast');
-    const emptyUpcoming = qs('#emptyUpcoming');
-    const emptyPast = qs('#emptyPast');
-    const pasteBox = qs('#pasteBox');
-    const filterMonth = qs('#filterMonth');
-    const filterStatus = qs('#filterStatus');
-    const searchInput = qs('#searchInput');
+    <!-- MAIN EVENT SCHEDULE -->
+    <div class="section">
+        <h2>Welcome & Farewell Program – Event Timeline</h2>
 
-    function isoDateOnly(d){
-      // Returns YYYY-MM-DD in local time
-      const yr = d.getFullYear();
-      const m = String(d.getMonth()+1).padStart(2,'0');
-      const day = String(d.getDate()).padStart(2,'0');
-      return `${yr}-${m}-${day}`;
-    }
+        <div class="time-block">
+            <div class="time">10:00 – 10:15 AM</div>
+            Registration & Welcome Desk
+        </div>
 
-    function parseDate(dateStr){
-      // Accepts YYYY-MM-DD or DD/MM/YYYY
-      if(!dateStr) return null;
-      let s = dateStr.trim();
-      if(/^\d{4}-\d{2}-\d{2}$/.test(s)){
-        const [y,m,d] = s.split('-').map(Number);
-        return new Date(y, m-1, d);
-      }
-      if(/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(s)){
-        const [d,m,y] = s.split('/').map(Number);
-        return new Date(y, m-1, d);
-      }
-      // Try Date fallback
-      const t = new Date(s);
-      return isNaN(t) ? null : t;
-    }
+        <div class="time-block">
+            <div class="time">10:15 – 10:30 AM</div>
+            Opening Ceremony  
+            <ul>
+                <li>Welcome Address</li>
+                <li>Lighting of the Lamp / Inauguration</li>
+                <li>Opening Music</li>
+            </ul>
+        </div>
 
-    function normalizeRow(cols){
-      // Ensure array length 5 [date, time, title, location, notes]
-      const out = new Array(5).fill('');
-      for(let i=0;i<5;i++) out[i] = (cols[i] ?? '').toString().trim();
-      return out;
-    }
+        <div class="time-block">
+            <div class="time">10:30 – 11:00 AM</div>
+            Formal Welcome Session
+            <ul>
+                <li>Introduction of Guests</li>
+                <li>Welcome Speech</li>
+                <li>Ice-Breaker Activity</li>
+            </ul>
+        </div>
 
-    function mkCell(txt){ const td = document.createElement('td'); td.textContent = txt || ''; return td; }
+        <div class="time-block">
+            <div class="time">11:00 – 12:00 PM</div>
+            Cultural Performances (Welcome Segment)
+            <ul>
+                <li>Dance</li>
+                <li>Song</li>
+                <li>Skit / Short Performances</li>
+            </ul>
+        </div>
 
-    function statusTag(isPast){
-      const span = document.createElement('span');
-      span.className = 'tag ' + (isPast ? 'past' : 'upcoming');
-      span.textContent = isPast ? 'Past' : 'Upcoming';
-      return span;
-    }
+        <div class="time-block">
+            <div class="time">12:00 – 12:30 PM</div>
+            Games & Interactive Activities
+        </div>
 
-    function rowToObj(tr){
-      const tds = qsa('td', tr).map(td=>td.textContent.trim());
-      return { date: tds[0], time: tds[1], title: tds[2], location: tds[3], notes: tds[4] };
-    }
+        <div class="time-block">
+            <div class="time">12:30 – 1:30 PM</div>
+            Lunch Break
+        </div>
 
-    function computeIsPast(dateStr){
-      const d = parseDate(dateStr);
-      if(!d) return false;
-      const today = new Date();
-      const todayOnly = isoDateOnly(today);
-      const target = isoDateOnly(d);
-      return target < todayOnly; // past if strictly before today
-    }
+        <div class="time-block">
+            <div class="time">1:30 – 2:15 PM</div>
+            Fun Activities & Team Games
+        </div>
 
-    function applyEmptyStates(){
-      emptyUpcoming.style.display = tbodyUpcoming.children.length ? 'none':'block';
-      emptyPast.style.display = tbodyPast.children.length ? 'none':'block';
-    }
+        <div class="time-block">
+            <div class="time">2:15 – 3:00 PM</div>
+            Farewell Session
+            <ul>
+                <li>Speeches by Juniors & Seniors</li>
+                <li>Sharing Memories</li>
+            </ul>
+        </div>
 
-    function addEventRow(cols){
-      const [date, time, title, location, notes] = normalizeRow(cols);
-      const isPast = computeIsPast(date);
-      const tr = document.createElement('tr');
-      tr.appendChild(mkCell(date));
-      tr.appendChild(mkCell(time));
-      tr.appendChild(mkCell(title));
-      tr.appendChild(mkCell(location));
-      tr.appendChild(mkCell(notes));
-      const tdStatus = document.createElement('td');
-      tdStatus.appendChild(statusTag(isPast));
-      tr.appendChild(tdStatus);
+        <div class="time-block">
+            <div class="time">3:00 – 3:30 PM</div>
+            Cultural Performances (Farewell Segment)
+        </div>
 
-      (isPast ? tbodyPast : tbodyUpcoming).appendChild(tr);
-      applyEmptyStates();
-      refreshMonthOptions();
-      applyFilters(); // keep filters consistent
-    }
+        <div class="time-block">
+            <div class="time">3:30 – 4:00 PM</div>
+            Awards, Titles & Memento Distribution
+        </div>
 
-    function parsePastedText(text){
-      // Split into lines, split by comma or tab (favor tabs if present)
-      const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-      const rows = [];
-      for(const line of lines){
-        // Support quoted CSV
-        let cells = [];
-        if(line.includes('\t')){
-          cells = line.split('\t');
-        }else{
-          // basic CSV split respecting quotes
-          const re = /("([^"]|"")*"|[^,]+)|(?<=,)(?=,)|^,(?=)|,(?=$)/g;
-          const matches = line.match(re) || [];
-          cells = matches.map(cell=>{
-            cell = cell.trim();
-            if(cell === ',') return ''; // handle empty between commas
-            if(cell.startsWith('"') && cell.endsWith('"')){
-              return cell.slice(1,-1).replace(/""/g,'"').trim();
-            }
-            return cell.replace(/^,|,$/g,'').trim();
-          }).filter(c=>c !== ',');
-          // Fallback if above over-splits
-          if(cells.length === 0) cells = line.split(',').map(s=>s.trim());
-        }
-        rows.push(cells);
-      }
-      return rows;
-    }
+        <div class="time-block">
+            <div class="time">4:00 – 4:30 PM</div>
+            Special Performance / Surprise Act
+        </div>
 
-    function refreshMonthOptions(){
-      // Build month filter from all dates in both tables
-      const set = new Set();
-      for(const tr of [...tbodyUpcoming.children, ...tbodyPast.children]){
-        const d = parseDate(qs('td:nth-child(1)', tr).textContent);
-        if(!d) continue;
-        set.add(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);
-      }
-      const current = filterMonth.value;
-      filterMonth.innerHTML = '<option value="">All months</option>';
-      [...set].sort().forEach(k=>{
-        const [y,m] = k.split('-');
-        const opt = document.createElement('option');
-        const date = new Date(Number(y), Number(m)-1, 1);
-        opt.value = k;
-        opt.textContent = date.toLocaleString(undefined, { month:'long', year:'numeric' });
-        filterMonth.appendChild(opt);
-      });
-      // preserve previous selection if possible
-      if([...filterMonth.options].some(o=>o.value===current)) filterMonth.value = current;
-    }
+        <div class="time-block">
+            <div class="time">4:30 – 4:50 PM</div>
+            Vote of Thanks & Closing Remarks
+        </div>
 
-    function applyFilters(){
-      const term = searchInput.value.trim().toLowerCase();
-      const month = filterMonth.value;
-      const status = filterStatus.value; // '', 'upcoming', 'past'
+        <div class="time-block">
+            <div class="time">4:50 – 5:00 PM</div>
+            Group Photos & Informal Interaction
+        </div>
 
-      function visible(tr, isPastBucket){
-        const obj = rowToObj(tr);
-        // search across title/location/notes
-        const hay = [obj.title, obj.location, obj.notes].join(' ').toLowerCase();
+    </div>
+
+</div>
+
+</body>
+</html>
