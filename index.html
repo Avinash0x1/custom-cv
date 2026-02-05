@@ -1,141 +1,309 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avinash Thakur - Resume</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Event Schedule</title>
+  <style>
+    :root{
+      --bg:#0f172a;          /* slate-900 */
+      --panel:#111827;       /* gray-900 */
+      --muted:#94a3b8;       /* slate-400 */
+      --text:#e5e7eb;        /* gray-200 */
+      --accent:#22c55e;      /* green-500 */
+      --accent-2:#38bdf8;    /* sky-400 */
+      --danger:#f87171;      /* red-400 */
+      --card:#0b1220;
+      --border:#1f2937;
+      --chip:#0b2a22;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";}
+    a{color:var(--accent-2);text-decoration:none}
+    header{padding:22px 16px 8px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px}
+    .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#16a34a)}
+    h1{font-size:clamp(20px,2.6vw,28px);margin:0}
+    .tools{display:flex;gap:8px;flex-wrap:wrap}
+    .btn{background:#0b1020;border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
+    .btn:hover{border-color:#334155}
+    .btn.primary{background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#031016;border:none}
+    .container{max-width:1100px;margin:0 auto;padding:10px 16px 40px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:980px){.grid{grid-template-columns:1fr 380px}}
+    .card{background:linear-gradient(180deg,var(--panel), #0b1220);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .card h2{margin:0 0 8px;font-size:18px}
+    .muted{color:var(--muted)}
+    .help{font-size:13px;color:var(--muted);margin-top:8px}
+    .textarea{width:100%;min-height:120px;border:1px dashed #334155;background:rgba(2,6,23,.6);color:var(--text);border-radius:10px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+    .flex{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{background:var(--chip);border:1px solid #0a2c21;color:#86efac;padding:4px 10px;border-radius:999px;font-size:12px}
+    table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    thead th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#9ca3af;text-align:left;padding:0 10px}
+    tbody tr{background:var(--card);border:1px solid var(--border)}
+    tbody tr td{padding:10px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    tbody tr td:first-child{border-left:1px solid var(--border);border-top-left-radius:10px;border-bottom-left-radius:10px}
+    tbody tr td:last-child{border-right:1px solid var(--border);border-top-right-radius:10px;border-bottom-right-radius:10px}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px}
+    .tag.upcoming{background:#052e1a;color:#86efac;border:1px solid #134e4a}
+    .tag.past{background:#2a0b0b;color:#fecaca;border:1px solid #7f1d1d}
+    .search{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 8px}
+    .search input,.search select{background:#0b1020;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+    .kebab{white-space:nowrap}
+    .empty{padding:22px 10px;color:var(--muted)}
+    .footnote{margin-top:8px;color:#9ca3af;font-size:12px}
+    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
+  </style>
 </head>
 <body>
+  <header>
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <h1>Event Schedule</h1>
+    </div>
+    <div class="tools">
+      <button class="btn" id="btnPrint" title="Print or save as PDF (from print dialog)">Print</button>
+      <button class="btn" id="btnExport">Export CSV</button>
+      <label class="btn" for="fileCsv" title="Import a CSV file">Import CSV<input id="fileCsv" type="file" accept=".csv" class="sr-only"></label>
+    </div>
+  </header>
 
-  <div class="resume-container">
-    <button id="theme-toggle" aria-label="Toggle theme">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-    </button>
-
-    <!-- Left Column -->
-    <aside class="sidebar">
-      <div class="profile-section">
-        <img src="photo_2024-09-05_10-58-17.jpg" alt="Avinash Thakur" class="profile-pic">
-        <h1>Avinash Thakur</h1>
-        <p class="job-title">Aspiring IT Professional</p>
-        <a href="https://avinashthakur.com.np" target="_blank" class="website-link">
-            <i class="fas fa-globe"></i> Visit Website
-        </a>
-      </div>
-
-      <div class="contact-section section">
-        <h2><i class="fas fa-address-book"></i> Contact</h2>
-        <p><i class="fas fa-phone"></i> <a href="tel:+977-9815498597">+977-9815498597</a></p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:avinashthakur0x1@gmail.com">avinashthakur0x1@gmail.com</a></p>
-        <p><i class="fas fa-link"></i> <a href="https://linktr.ee/avinash0x1" target="_blank">linktr.ee/avinash0x1</a></p>
-        <p><i class="fas fa-map-marker-alt"></i> Bhairahawa, Nepal</p>
-      </div>
-
-      <div class="profile-details-section section">
-        <h2><i class="fas fa-user-circle"></i> Profile</h2>
-        <p><strong>DOB:</strong> 2001-11-13</p>
-        <p><strong>Marital Status:</strong> Single</p>
-      </div>
-
-      <div class="skills-section section">
-        <h2><i class="fas fa-cogs"></i> Skills</h2>
-        <ul class="skills-list">
-          <li>MS Dynamics NAV</li>
-          <li>Shipping & Receiving</li>
-          <li>Binning & Reporting</li>
-          <li>Pick and Pack</li>
-          <li>Inventory Management</li>
-          <li>Pallet Stacker, Jack</li>
-          <li>Microsoft Office Suite</li>
-          <li>Interpersonal Skills</li>
-          <li>Communication Skills</li>
-          <li>Problem-Solving</li>
-          <li>Analytical Skills</li>
-          <li>Excel & Presentation</li>
-          <li>Marketing & Sales</li>
-        </ul>
-      </div>
-
-      <div class="languages-section section">
-        <h2><i class="fas fa-language"></i> Languages</h2>
-        <p>English, Nepali, Hindi, Bhojpuri</p>
-      </div>
-
-      <div class="hobbies-section section">
-        <h2><i class="fas fa-heart"></i> Hobbies</h2>
-        <p>Reading, Volunteering, Fitness, Gardening, Traveling, Continuous Learning</p>
-      </div>
-    </aside>
-
-    <!-- Right Column -->
-    <main class="main-content">
-      <div class="section">
-        <h2><i class="fas fa-bullseye"></i> Career Objective</h2>
-        <p>To secure a challenging position in a reputable organization to expand my learnings, knowledge, and skills. Secure a responsible career opportunity to fully utilize my training, skills, and experience while making a significant contribution to the success of the company.</p>
-      </div>
-
-      <div class="section">
-        <h2><i class="fas fa-briefcase"></i> Experience</h2>
-        <div class="experience-item">
-          <h3>Dedicated Logistics Professional</h3>
-          <p class="company-name"><strong>Agni Logistics Pvt. Ltd</strong> | Mar 2024 - Present</p>
-          <p>Expertise in put-away, binning, reporting, and inventory management. Proven track record of optimizing warehouse operations and maintaining accurate inventory levels to ensure efficient supply chain processes.</p>
+  <div class="container">
+    <div class="grid">
+      <!-- LEFT: Tables -->
+      <section class="card">
+        <h2>Upcoming Events</h2>
+        <div class="search">
+          <input type="text" id="searchInput" placeholder="Search title, location, notes…" />
+          <select id="filterMonth" title="Filter by month">
+            <option value="">All months</option>
+          </select>
+          <select id="filterStatus" title="Filter by status">
+            <option value="">All</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="past">Past</option>
+          </select>
+          <button class="btn" id="btnClearFilters">Clear</button>
         </div>
-        <div class="experience-item">
-          <h3>FOS (Feet on Street-sales)</h3>
-          <p class="company-name"><strong>OHM Solution Pvt. Ltd.</strong> | Dec 2021 – Jan 2023</p>
-          <p>Worked as a salesperson, achieving monthly targets and successfully onboarding over 75 new outlets.</p>
-        </div>
-        <div class="experience-item">
-          <h3>Sales Supervisor</h3>
-          <p class="company-name"><strong>Nirmal Suppliers Pvt. Ltd.</strong> | Feb 2020 – Mar 2021</p>
-          <p>Worked as a sales supervisor for Priti Noodles, responsible for sales and acquiring new customers.</p>
-        </div>
-      </div>
 
-      <div class="section">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        <div class="education-item">
-          <h3>Bachelor in Information Technology (BIT)</h3>
-          <p class="institution-name"><strong>Bhairahawa Multiple Campus</strong> | Present</p>
+        <div class="flex" style="margin-bottom:8px;">
+          <span class="chip">Paste-ready</span>
+          <span class="chip">CSV / TSV supported</span>
+          <span class="chip">Auto “Past” after date</span>
         </div>
-        <div class="education-item">
-          <h3>+2 Science</h3>
-          <p class="institution-name"><strong>Bhairahawa Model Secondary School</strong> | 2020-2021 (2.64 CGPA)</p>
-        </div>
-        <div class="education-item">
-          <h3>S.E.E. (Math)</h3>
-          <p class="institution-name"><strong>New Era English Boarding School</strong> | 2019 (3.05 CGPA)</p>
-        </div>
-      </div>
 
-      <div class="section">
-        <h2><i class="fas fa-tools"></i> Training</h2>
-        <ul class="training-list">
-          <li>Advanced and Basic Computer Training</li>
-          <li>Electrical Assistant</li>
-        </ul>
-      </div>
+        <table aria-label="Upcoming events table">
+          <thead>
+            <tr>
+              <th style="width:120px;">Date</th>
+              <th style="width:90px;">Time</th>
+              <th>Title</th>
+              <th style="width:180px;">Location</th>
+              <th>Notes</th>
+              <th class="kebab" style="width:90px;">Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyUpcoming">
+            <!-- You can paste <tr> rows here directly if you want -->
+            <!-- Example:
+            <tr>
+              <td>2026-03-10</td><td>10:00</td><td>Project Kickoff</td><td>Hall A</td><td>Bring slides</td><td></td>
+            </tr>
+            -->
+          </tbody>
+        </table>
+        <div id="emptyUpcoming" class="empty">No upcoming events yet. Add some below 👇</div>
+      </section>
 
-      <div class="section">
-        <h2><i class="fas fa-users"></i> References</h2>
-        <div class="reference-item">
-          <p><strong>Sunil Shah (Supervisor)</strong> - Agni Logistics Pvt. Ltd <br><a href="tel:+977-9808025048">+977-9808025048</a></p>
+      <!-- RIGHT: Paste panel + Past table -->
+      <aside class="card">
+        <h2>Add / Paste Events</h2>
+        <p class="muted">
+          Paste rows in this format (CSV or TSV):<br>
+          <code>YYYY-MM-DD, HH:MM, Title, Location, Notes</code>
+        </p>
+        <textarea id="pasteBox" class="textarea" placeholder="Example:
+2026-03-10, 10:00, Project Kickoff, Main Hall, Bring slides
+2026-04-02, 09:30, Town Hall, Auditorium, Coffee at 9:10
+2025-12-15, , Year-End Party, Rooftop, Casual"></textarea>
+        <div class="flex" style="margin-top:8px;">
+          <button class="btn primary" id="btnAdd">Add to Table</button>
+          <button class="btn" id="btnClearBox">Clear Box</button>
         </div>
-        <div class="reference-item">
-          <p><strong>Laxman Pokhrel (Chief Manager)</strong> - OHM Solution Pvt. Ltd <br><a href="tel:+977-9801817181">+977-9801817181</a></p>
-        </div>
-        <div class="reference-item">
-          <p><strong>Nirmal Dhakal (Managing Director)</strong> - Nirmal Suppliers Pvt. Ltd <br><a href="tel:+977-9857087743">+977-9857087743</a></p>
-        </div>
-         <p class="reference-note"><em>Further references available upon request.</em></p>
-      </div>
-    </main>
+        <p class="help">Tip: You can also paste raw HTML rows (&lt;tr&gt;...&lt;/tr&gt;) directly into the Upcoming table’s body in the code if that’s easier.</p>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Past Events</h2>
+      <table aria-label="Past events table">
+        <thead>
+          <tr>
+            <th style="width:120px;">Date</th>
+            <th style="width:90px;">Time</th>
+            <th>Title</th>
+            <th style="width:180px;">Location</th>
+            <th>Notes</th>
+            <th class="kebab" style="width:90px;">Status</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyPast"></tbody>
+      </table>
+      <div id="emptyPast" class="empty">No past events yet.</div>
+      <div class="footnote">Status is calculated using your device’s date.</div>
+    </section>
   </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <script>
+    // --- Utilities ---
+    const qs = (s, r=document)=>r.querySelector(s);
+    const qsa = (s, r=document)=>[...r.querySelectorAll(s)];
+
+    const tbodyUpcoming = qs('#tbodyUpcoming');
+    const tbodyPast = qs('#tbodyPast');
+    const emptyUpcoming = qs('#emptyUpcoming');
+    const emptyPast = qs('#emptyPast');
+    const pasteBox = qs('#pasteBox');
+    const filterMonth = qs('#filterMonth');
+    const filterStatus = qs('#filterStatus');
+    const searchInput = qs('#searchInput');
+
+    function isoDateOnly(d){
+      // Returns YYYY-MM-DD in local time
+      const yr = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      const day = String(d.getDate()).padStart(2,'0');
+      return `${yr}-${m}-${day}`;
+    }
+
+    function parseDate(dateStr){
+      // Accepts YYYY-MM-DD or DD/MM/YYYY
+      if(!dateStr) return null;
+      let s = dateStr.trim();
+      if(/^\d{4}-\d{2}-\d{2}$/.test(s)){
+        const [y,m,d] = s.split('-').map(Number);
+        return new Date(y, m-1, d);
+      }
+      if(/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(s)){
+        const [d,m,y] = s.split('/').map(Number);
+        return new Date(y, m-1, d);
+      }
+      // Try Date fallback
+      const t = new Date(s);
+      return isNaN(t) ? null : t;
+    }
+
+    function normalizeRow(cols){
+      // Ensure array length 5 [date, time, title, location, notes]
+      const out = new Array(5).fill('');
+      for(let i=0;i<5;i++) out[i] = (cols[i] ?? '').toString().trim();
+      return out;
+    }
+
+    function mkCell(txt){ const td = document.createElement('td'); td.textContent = txt || ''; return td; }
+
+    function statusTag(isPast){
+      const span = document.createElement('span');
+      span.className = 'tag ' + (isPast ? 'past' : 'upcoming');
+      span.textContent = isPast ? 'Past' : 'Upcoming';
+      return span;
+    }
+
+    function rowToObj(tr){
+      const tds = qsa('td', tr).map(td=>td.textContent.trim());
+      return { date: tds[0], time: tds[1], title: tds[2], location: tds[3], notes: tds[4] };
+    }
+
+    function computeIsPast(dateStr){
+      const d = parseDate(dateStr);
+      if(!d) return false;
+      const today = new Date();
+      const todayOnly = isoDateOnly(today);
+      const target = isoDateOnly(d);
+      return target < todayOnly; // past if strictly before today
+    }
+
+    function applyEmptyStates(){
+      emptyUpcoming.style.display = tbodyUpcoming.children.length ? 'none':'block';
+      emptyPast.style.display = tbodyPast.children.length ? 'none':'block';
+    }
+
+    function addEventRow(cols){
+      const [date, time, title, location, notes] = normalizeRow(cols);
+      const isPast = computeIsPast(date);
+      const tr = document.createElement('tr');
+      tr.appendChild(mkCell(date));
+      tr.appendChild(mkCell(time));
+      tr.appendChild(mkCell(title));
+      tr.appendChild(mkCell(location));
+      tr.appendChild(mkCell(notes));
+      const tdStatus = document.createElement('td');
+      tdStatus.appendChild(statusTag(isPast));
+      tr.appendChild(tdStatus);
+
+      (isPast ? tbodyPast : tbodyUpcoming).appendChild(tr);
+      applyEmptyStates();
+      refreshMonthOptions();
+      applyFilters(); // keep filters consistent
+    }
+
+    function parsePastedText(text){
+      // Split into lines, split by comma or tab (favor tabs if present)
+      const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+      const rows = [];
+      for(const line of lines){
+        // Support quoted CSV
+        let cells = [];
+        if(line.includes('\t')){
+          cells = line.split('\t');
+        }else{
+          // basic CSV split respecting quotes
+          const re = /("([^"]|"")*"|[^,]+)|(?<=,)(?=,)|^,(?=)|,(?=$)/g;
+          const matches = line.match(re) || [];
+          cells = matches.map(cell=>{
+            cell = cell.trim();
+            if(cell === ',') return ''; // handle empty between commas
+            if(cell.startsWith('"') && cell.endsWith('"')){
+              return cell.slice(1,-1).replace(/""/g,'"').trim();
+            }
+            return cell.replace(/^,|,$/g,'').trim();
+          }).filter(c=>c !== ',');
+          // Fallback if above over-splits
+          if(cells.length === 0) cells = line.split(',').map(s=>s.trim());
+        }
+        rows.push(cells);
+      }
+      return rows;
+    }
+
+    function refreshMonthOptions(){
+      // Build month filter from all dates in both tables
+      const set = new Set();
+      for(const tr of [...tbodyUpcoming.children, ...tbodyPast.children]){
+        const d = parseDate(qs('td:nth-child(1)', tr).textContent);
+        if(!d) continue;
+        set.add(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);
+      }
+      const current = filterMonth.value;
+      filterMonth.innerHTML = '<option value="">All months</option>';
+      [...set].sort().forEach(k=>{
+        const [y,m] = k.split('-');
+        const opt = document.createElement('option');
+        const date = new Date(Number(y), Number(m)-1, 1);
+        opt.value = k;
+        opt.textContent = date.toLocaleString(undefined, { month:'long', year:'numeric' });
+        filterMonth.appendChild(opt);
+      });
+      // preserve previous selection if possible
+      if([...filterMonth.options].some(o=>o.value===current)) filterMonth.value = current;
+    }
+
+    function applyFilters(){
+      const term = searchInput.value.trim().toLowerCase();
+      const month = filterMonth.value;
+      const status = filterStatus.value; // '', 'upcoming', 'past'
+
+      function visible(tr, isPastBucket){
+        const obj = rowToObj(tr);
+        // search across title/location/notes
+        const hay = [obj.title, obj.location, obj.notes].join(' ').toLowerCase();
