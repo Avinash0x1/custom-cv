@@ -1,221 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIT Program Schedule 2082</title>
-
-<style>
-  :root{
-    --bg:#0b0f17;         /* page background (near-black) */
-    --card:#0f172a;       /* section panels */
-    --text:#e5e7eb;       /* main text (light gray) */
-    --muted:#94a3b8;      /* secondary text */
-    --accent:#3b82f6;     /* blue for highlights/lines */
-    --accent-2:#22c55e;   /* optional green accent */
-    --border:#1f2937;     /* subtle borders */
-  }
-  *{box-sizing:border-box}
-  body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 20px;
-  }
-  .container {
-      max-width: 900px;
-      margin: auto;
-      background: linear-gradient(180deg, rgba(17,24,39,0.85), rgba(2,6,23,0.85));
-      padding: 26px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-      backdrop-filter: blur(2px);
-  }
-  h1, h2, h3 {
-      text-align: center;
-      color: #f8fafc; /* almost white for headings */
-      margin-top: 0.2em;
-      margin-bottom: 0.6em;
-  }
-  h1 { font-size: clamp(22px, 4vw, 32px); }
-  h2 { font-size: clamp(18px, 3vw, 24px); }
-  h3 { font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); }
-
-  .section {
-      margin-bottom: 28px;
-      background: #0b1220; /* dark card */
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-  }
-  p, li { color: var(--text); }
-  ul {
-      line-height: 1.75;
-      margin: 8px 0 0;
-      padding-left: 20px;
-  }
-  .time-block {
-      background: #0c1629;
-      padding: 12px;
-      margin: 12px 0;
-      border-left: 4px solid var(--accent);
-      border-radius: 8px;
-      border: 1px solid #0f2346;
-  }
-  .time {
-      font-weight: 700;
-      color: #cbd5e1;
-  }
-  .sublist {
-      margin-top: 8px;
-      color: var(--muted);
-  }
-  .meta {
-      text-align:center;
-      color: var(--muted);
-      margin-bottom: 16px;
-  }
-  a { color: #93c5fd; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avinash Thakur - Interactive Resume</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Interactive resume of Avinash Thakur - Aspiring IT Professional with expertise in logistics, sales, and technology.">
 </head>
-
 <body>
 
-<div class="container">
+  <div class="resume-container">
+    <button id="theme-toggle" aria-label="Toggle dark/light theme" title="Switch Theme">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    </button>
 
-    <h1>BIT PROGRAM SCHEDULE - 2082</h1>
-    <h3>Date: February 16 , 2026 </h3>
-    <p style="text-align:center;">Program Starts: <strong>11:00 AM Onwards</strong></p>
+    <!-- Left Column -->
+    <aside class="sidebar">
+      <div class="profile-section">
+        <div class="profile-pic-container">
+          <img src="photo_2024-09-05_10-58-17.jpg" alt="Avinash Thakur - Professional Photo" class="profile-pic">
+          <div class="profile-pic-overlay">
+            <i class="fas fa-camera"></i>
+          </div>
+        </div>
+        <h1>Avinash Thakur</h1>
+        <p class="job-title">Aspiring IT Professional</p>
+        <a href="https://avinashthakur.com.np" target="_blank" class="website-link" title="Visit Personal Website">
+            <i class="fas fa-globe"></i> Visit Website
+        </a>
+        <a href="Avinash_Thakur_Resume.pdf" download="Avinash_Thakur_CV.pdf" class="download-cv-link" title="Download PDF Resume">
+            <i class="fas fa-download"></i> Download CV (PDF)
+        </a>
+      </div>
 
-    <!-- SPEECHES -->
-    <div class="section">
-        <h2>Speeches</h2>
-        <ul>
-            <li>Welcome Speech – 3rd Sem</li>
-            <li>Thank-You Speech 1.0 – 1st Sem</li>
-            <li>Chief Speech</li>
-            <li>Coordinator Speech</li>
-            <li>Farewell Speech – 5th Sem</li>
-            <li>Thank-You Speech 2.0 – 7th Sem</li>
-            <li>Closing Speech</li>
+      <div class="contact-section section">
+        <h2><i class="fas fa-address-book"></i> Contact</h2>
+        <div class="contact-item">
+          <p><i class="fas fa-phone"></i> <a href="tel:+977-9815498597" title="Call Avinash">+977-9815498597</a></p>
+        </div>
+        <div class="contact-item">
+          <p><i class="fas fa-envelope"></i> <a href="mailto:avinashthakur0x1@gmail.com" title="Send Email">avinashthakur0x1@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <p><i class="fas fa-link"></i> <a href="https://linktr.ee/avinash0x1" target="_blank" title="Social Links">linktr.ee/avinash0x1</a></p>
+        </div>
+        <div class="contact-item">
+          <p><i class="fas fa-map-marker-alt"></i> Bhairahawa, Nepal</p>
+        </div>
+      </div>
+
+      <div class="profile-details-section section">
+        <h2><i class="fas fa-user-circle"></i> Profile</h2>
+        <div class="profile-detail">
+          <p><strong><i class="fas fa-birthday-cake"></i> DOB:</strong> 2001-11-13</p>
+        </div>
+        <div class="profile-detail">
+          <p><strong><i class="fas fa-heart"></i> Status:</strong> Single</p>
+        </div>
+      </div>
+
+      <div class="skills-section section">
+        <h2><i class="fas fa-cogs"></i> Skills</h2>
+        <ul class="skills-list">
+          <li data-level="expert"><i class="fas fa-cloud"></i> MS Dynamics 365 BC</li>
+          <li data-level="expert"><i class="fas fa-database"></i> MS Dynamics NAV</li>
+          <li data-level="advanced"><i class="fas fa-truck"></i> Shipping & Receiving</li>
+          <li data-level="advanced"><i class="fas fa-chart-bar"></i> Binning & Reporting</li>
+          <li data-level="intermediate"><i class="fas fa-box"></i> Pick and Pack</li>
+          <li data-level="expert"><i class="fas fa-warehouse"></i> Inventory Management</li>
+          <li data-level="intermediate"><i class="fas fa-tools"></i> Pallet Stacker, Jack</li>
+          <li data-level="advanced"><i class="fab fa-microsoft"></i> Microsoft Office Suite</li>
+          <li data-level="expert"><i class="fas fa-users"></i> Interpersonal Skills</li>
+          <li data-level="expert"><i class="fas fa-comments"></i> Communication Skills</li>
+          <li data-level="advanced"><i class="fas fa-puzzle-piece"></i> Problem-Solving</li>
+          <li data-level="advanced"><i class="fas fa-brain"></i> Analytical Skills</li>
+          <li data-level="expert"><i class="fas fa-file-excel"></i> Excel & Presentation</li>
+          <li data-level="advanced"><i class="fas fa-chart-line"></i> Marketing & Sales</li>
         </ul>
-    </div>
+      </div>
 
-    <!-- POSSIBLE PROGRAMS -->
-    <div class="section">
-        <h2>Possible Programs</h2>
-        <ul>
-            <li>Mr. & Mrs. Freshers (Ramp Walk, Introduction, Q&A)</li>
-            <li>Dances</li>
-            <li>Stand-up Comedy</li>
-        </ul>
-    </div>
-
-    <!-- GAMES -->
-    <div class="section">
-        <h2>Games</h2>
-        <ul>
-            <li>Balloon Bursting</li>
-            <li>Hot Potato</li>
-            <li>Jumble Words Questions</li>
-        </ul>
-    </div>
-
-    <!-- MAIN EVENT SCHEDULE -->
-    <div class="section">
-        <h2>Welcome & Farewell Program – Event Timeline</h2>
-
-        <div class="time-block">
-            <div class="time">10:00 – 10:15 AM</div>
-            Registration & Welcome Desk
+      <div class="languages-section section">
+        <h2><i class="fas fa-language"></i> Languages</h2>
+        <div class="language-list">
+          <div class="language-item">
+            <span>English</span>
+            <div class="language-level">
+              <div class="level-bar" data-level="90"></div>
+            </div>
+          </div>
+          <div class="language-item">
+            <span>Nepali</span>
+            <div class="language-level">
+              <div class="level-bar" data-level="100"></div>
+            </div>
+          </div>
+          <div class="language-item">
+            <span>Hindi</span>
+            <div class="language-level">
+              <div class="level-bar" data-level="85"></div>
+            </div>
+          </div>
+          <div class="language-item">
+            <span>Bhojpuri</span>
+            <div class="language-level">
+              <div class="level-bar" data-level="95"></div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="time-block">
-            <div class="time">10:15 – 10:30 AM</div>
-            Opening Ceremony  
-            <ul>
-                <li>Welcome Address</li>
-                <li>Lighting of the Lamp / Inauguration</li>
-                <li>Opening Music</li>
-            </ul>
+      <div class="hobbies-section section">
+        <h2><i class="fas fa-heart"></i> Interests</h2>
+        <div class="hobbies-grid">
+          <span class="hobby-item"><i class="fas fa-book"></i> Reading</span>
+          <span class="hobby-item"><i class="fas fa-hands-helping"></i> Volunteering</span>
+          <span class="hobby-item"><i class="fas fa-dumbbell"></i> Fitness</span>
+          <span class="hobby-item"><i class="fas fa-seedling"></i> Gardening</span>
+          <span class="hobby-item"><i class="fas fa-plane"></i> Traveling</span>
+          <span class="hobby-item"><i class="fas fa-graduation-cap"></i> Learning</span>
         </div>
+      </div>
+    </aside>
 
-        <div class="time-block">
-            <div class="time">10:30 – 11:00 AM</div>
-            Formal Welcome Session
-            <ul>
-                <li>Introduction of Guests</li>
-                <li>Welcome Speech</li>
-                <li>Ice-Breaker Activity</li>
-            </ul>
+    <!-- Right Column -->
+    <main class="main-content">
+      <div class="section">
+        <h2><i class="fas fa-bullseye"></i> Career Objective</h2>
+        <p>To secure a challenging position in a reputable organization to expand my learnings, knowledge, and skills. Secure a responsible career opportunity to fully utilize my training, skills, and experience while making a significant contribution to the success of the company.</p>
+      </div>
+
+      <div class="section">
+        <h2><i class="fas fa-briefcase"></i> Experience</h2>
+        <div class="experience-item">
+          <h3>Dedicated Logistics Professional</h3>
+          <p class="company-name"><strong>Agni Logistics Pvt. Ltd</strong> | Mar 2024 - Present</p>
+          <p>Expertise in put-away, binning, reporting, and inventory management. Proven track record of optimizing warehouse operations and maintaining accurate inventory levels to ensure efficient supply chain processes.</p>
         </div>
-
-        <div class="time-block">
-            <div class="time">11:00 – 12:00 PM</div>
-            Cultural Performances (Welcome Segment)
-            <ul>
-                <li>Dance</li>
-                <li>Song</li>
-                <li>Skit / Short Performances</li>
-            </ul>
+        <div class="experience-item">
+          <h3>FOS (Feet on Street-sales)</h3>
+          <p class="company-name"><strong>OHM Solution Pvt. Ltd.</strong> | Dec 2021 – Jan 2023</p>
+          <p>Worked as a salesperson, achieving monthly targets and successfully onboarding over 75 new outlets.</p>
         </div>
-
-        <div class="time-block">
-            <div class="time">12:00 – 12:30 PM</div>
-            Games & Interactive Activities
+        <div class="experience-item">
+          <h3>Sales Supervisor</h3>
+          <p class="company-name"><strong>Nirmal Suppliers Pvt. Ltd.</strong> | Feb 2020 – Mar 2021</p>
+          <p>Worked as a sales supervisor for Priti Noodles, responsible for sales and acquiring new customers.</p>
         </div>
-
-        <div class="time-block">
-            <div class="time">12:30 – 1:30 PM</div>
-            Lunch Break
-        </div>
-
-        <div class="time-block">
-            <div class="time">1:30 – 2:15 PM</div>
-            Fun Activities & Team Games
-        </div>
-
-        <div class="time-block">
-            <div class="time">2:15 – 3:00 PM</div>
-            Farewell Session
-            <ul>
-                <li>Speeches by Juniors & Seniors</li>
-                <li>Sharing Memories</li>
-            </ul>
-        </div>
-
-        <div class="time-block">
-            <div class="time">3:00 – 3:30 PM</div>
-            Cultural Performances (Farewell Segment)
-        </div>
-
-        <div class="time-block">
-            <div class="time">3:30 – 4:00 PM</div>
-            Awards, Titles & Memento Distribution
-        </div>
-
-        <div class="time-block">
-            <div class="time">4:00 – 4:30 PM</div>
-            Special Performance / Surprise Act
-        </div>
-
-        <div class="time-block">
-            <div class="time">4:30 – 4:50 PM</div>
-            Vote of Thanks & Closing Remarks
-        </div>
-
-        <div class="time-block">
-            <div class="time">4:50 – 5:00 PM</div>
-            Group Photos & Informal Interaction
-        </div>
-
-    </div>
-
+      </div>
+<div class="section">
+  <h2><i class="fas fa-trophy"></i> Achievements</h2>
+  <div class="experience-item">
+    <h3>Employee of the Quarter — Q1 2025</h3>
+    <p class="company-name"><strong>Agni Logistics Pvt. Ltd</strong> | Jan 2025</p>
+    <p>Recognized for taking initiative to lead team tasks and ensuring accuracy in daily warehouse operations.</p>
+  </div>
 </div>
 
+      <div class="section">
+        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+        <div class="education-item">
+          <h3>Bachelor in Information Technology (BIT)</h3>
+          <p class="institution-name"><strong>Bhairahawa Multiple Campus</strong> | Present</p>
+        </div>
+        <div class="education-item">
+          <h3>+2 Science</h3>
+          <p class="institution-name"><strong>Bhairahawa Model Secondary School</strong> | 2020-2021 (2.64 CGPA)</p>
+        </div>
+        <div class="education-item">
+          <h3>S.E.E. (Math)</h3>
+          <p class="institution-name"><strong>New Era English Boarding School</strong> | 2019 (3.05 CGPA)</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><i class="fas fa-tools"></i> Training</h2>
+        <ul class="training-list">
+          <li>Advanced and Basic Computer Training</li>
+          <li>Electrical Assistant</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2><i class="fas fa-users"></i> References</h2>
+        <div class="reference-item">
+          <p><strong>Sunil Shah (Incharge)</strong> - Agni Logistics Pvt. Ltd <!--<br><a href="tel:+977-9808025048">+977-9808025048</a></p>-->
+        </div>
+        <div class="reference-item">
+          <p><strong>Laxman Pokhrel (Chief Manager)</strong> - OHM Solution Pvt. Ltd <!--<br><a href="tel:+977-9801817181">+977-9801817181</a></p>-->
+        </div>
+        <div class="reference-item">
+          <p><strong>Nirmal Dhakal (Managing Director)</strong> - Nirmal Suppliers Pvt. Ltd <!--<br><a href="tel:+977-9857087743">+977-9857087743</a></p>-->
+        </div>
+         <p class="reference-note"><em>Further references available upon request.</em></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
-
