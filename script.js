@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             applyTheme('light'); // Default to light
         }
     }
-
+    
     // Toggle theme on button click
     themeToggle.addEventListener('click', () => {
         if (body.classList.contains('dark-mode')) {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             z-index: -1;
             overflow: hidden;
         `;
-
+        
         for (let i = 0; i < 15; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             particleContainer.appendChild(particle);
         }
-
+        
         document.body.appendChild(particleContainer);
     }
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = jobTitle.textContent;
         jobTitle.textContent = '';
         let i = 0;
-
+        
         const typeWriter = () => {
             if (i < text.length) {
                 jobTitle.textContent += text.charAt(i);
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(typeWriter, 100);
             }
         };
-
+        
         setTimeout(typeWriter, 2000); // Start after 2 seconds
     }
 
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hsl(${Math.random() * 360}, 70%, 60%) 0%, 
                 hsl(${Math.random() * 360}, 70%, 40%) 100%)`;
         });
-
+        
         skill.addEventListener('mouseleave', function() {
             this.style.background = '';
         });
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const size = Math.max(rect.width, rect.height);
             const x = e.clientX - rect.left - size / 2;
             const y = e.clientY - rect.top - size / 2;
-
+            
             ripple.style.cssText = `
                 position: absolute;
                 width: ${size}px;
@@ -220,11 +220,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 animation: ripple 0.6s ease-out;
                 pointer-events: none;
             `;
-
+            
             this.style.position = 'relative';
             this.style.overflow = 'hidden';
             this.appendChild(ripple);
-
+            
             setTimeout(() => {
                 ripple.remove();
             }, 600);
