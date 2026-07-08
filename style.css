@@ -899,4 +899,50 @@ body.dark-mode .reference-note {
     max-width: 100%;
   }
   #theme-toggle {
-  
+    display: none; /* Hide theme toggle button */
+  }
+  .sidebar {
+    width: 30%; /* Adjust sidebar width for print */
+    float: left;
+    background-color: #f0f0f0 !important; /* Light grey sidebar for print, override JS */
+    color: #000 !important;
+    padding: 15px;
+  }
+  .sidebar h1, .sidebar h2, .sidebar p, .sidebar li, .sidebar a {
+    color: #000 !important; /* Ensure text is black */
+  }
+  .sidebar .website-link {
+    background-color: #ddd !important;
+    color: #000 !important;
+  }
+  .profile-pic {
+    border-color: #666;
+  }
+  .skills-list li {
+      background-color: #e9e9e9 !important;
+      color: #000 !important;
+  }
+
+  .main-content {
+    width: 68%; /* Adjust main content width */
+    float: right;
+    padding: 15px;
+  }
+  .main-content .section {
+      border-bottom: 1px solid #ccc;
+      page-break-inside: avoid; /* Try to keep sections from splitting across pages */
+  }
+  .main-content h2, .main-content h3, .main-content p, .main-content li, .main-content a {
+    color: #000 !important;
+  }
+  .main-content a {
+    text-decoration: none; /* Remove underline for cleaner print */
+  }
+  .main-content a[href^="http"]:after, .main-content a[href^="mailto"]:after {
+    content: " (" attr(href) ")"; /* Show full links when printing */
+    font-size: 0.8em;
+  }
+  .company-name, .institution-name {
+      font-weight: bold;
+  }
+}
